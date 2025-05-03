@@ -2,14 +2,20 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-PORT=8462
+PORT=8463
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
-@app.get("/")
-def getIp(request: Request):
-    return { 'ip': request.client.host } 
+rooms = [
+    {"number": 303},
+    {"number": 404},
+    {"number": 505}
+    ]
+
+@app.get("/rooms")
+def getRooms(request: Request):
+    return rooms 
 
 if __name__ == "__main__":
     uvicorn.run(
