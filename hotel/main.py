@@ -8,9 +8,9 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 rooms = [
-    {"number": 303},
-    {"number": 404},
-    {"number": 505}
+    {"number": 303, "type": "single", "price": 150},
+    {"number": 404, "type": "double", "price": 250},
+    {"number": 505, "type": "suite", "price": 350}
     ]
 
 @app.get("/rooms")
